@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "../style";
 
-const Actions = () => (
+const Actions = ({ getRepos, getStarred }) => (
   <div className="action">
-    <Button> Ver Repositório </Button>
-    <Button> Ver favoritos </Button>
+    <Button onClick={getRepos}> Ver Repositórios </Button>
+    <Button onClick={getStarred}> Ver favoritos </Button>
   </div>
 );
 

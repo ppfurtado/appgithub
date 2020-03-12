@@ -29,10 +29,30 @@ class App extends Component {
               repos: result.public_repos,
               followers: result.followers,
               following: result.following
-            }
+            },
+            repos: [],
+            starred: []
           });
         });
     }
+  }
+
+  getRepos(type) {
+    return e => {
+      ajax()
+        .get(
+          `https://api.github.com/users/${this.state.userinfo.login}/${type}`
+        )
+        .then(result => {
+          this.setState({
+            [type]: result.map(repo => ({
+              name: repo.name,
+              link: repo.html_url,
+              stateBtn: !this.state.stateBtn
+            }))
+          });
+        });
+    };
   }
 
   render() {
@@ -42,6 +62,8 @@ class App extends Component {
         repos={this.state.repos}
         starred={this.state.starred}
         handleSearch={e => this.handleSearch(e)}
+        getRepos={this.getRepos("repos")}
+        getStarred={this.getRepos("starred")}
       />
     );
   }
