@@ -1,9 +1,10 @@
 import React from "react";
+import { Button } from "../style";
 
 const Actions = () => (
   <div className="action">
-    <button>Ver Repositório</button>
-    <button>Ver favoritos</button>
+    <Button> Ver Repositório </Button>
+    <Button> Ver favoritos </Button>
   </div>
 );
 
